@@ -1,0 +1,35 @@
+基本指令：touch 創建檔案
+	  mkdir 創建資料夾
+	  cat   查看檔案內容
+	  cd    進入資料夾
+	  ls    查看當前資料夾內的檔案
+	  chmod 給權限
+step：
+	進入tmr_ros2/docker_tmrobot
+	執行(build.sh) and run.sh  (chmod +x [filename])
+	
+	source ./install/setup.bash(開新的終端都要執行）
+	
+	終端1：
+		連手臂的ip位置(ros2 launch tm_moveit_cpp_demo tm5-900_run_moveit_cpp.launch.py robot_ip:=192.168.10.2)
+	其他終端(手臂要執行listen):
+		可以使用其他東西
+	
+	
+ros2:	
+	(如果是CPP檔的話執行要先colcon build)
+	ros2 run {packagename} {filename}    (手臂要在執行的狀態)
+	
+			
+	vision:
+		任務編輯(手臂)：
+			AOI辨識->物件偵測->外部偵測->設置->(上半部是測試的)http://192.168.10.10(電腦ip）:6189/api->(下半部)http://192.168.10.10(電腦ip）:6189/api/DET->輸入值->按下增加->輸入名稱(最下面)->儲存
+				
+				
+		終端2(拍照的driver):
+			ros2 run tm_get_status image_talker
+		終端3(手臂要執行對的視覺任務節點):	
+			ros2 run custom_package x (x=sub_img or take_tm_pic_multi)
+			
+	
+	
